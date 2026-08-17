@@ -49,3 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
     adsInit().then(showAdsBanner).catch(() => {});
   }
 });
+
+let lastInterstitialTime = 0;
+const INTERSTITIAL_COOLDOWN_MS = 60000;
+
+async function maybeShowInterstitial() {
+  if (!isNativeApp()) return;
+  const now = Date.now();
+  if (now - lastInterstitialTime < INTERSTITIAL_COOLDOWN_MS) return;
+  lastInterstitialTime = now;
+  await showAdsInterstitial();
+}

@@ -28,7 +28,7 @@ async function showAdsBanner() {
     await AdMob.showBanner({
       adId: ADMOB_TEST.banner,
       adSize: 'ADAPTIVE_BANNER',
-      position: 'BOTTOM_CENTER',
+      position: 'TOP_CENTER',
       isTesting: true
     });
   } catch (e) { console.warn('[AdMob] banner failed', e); }
